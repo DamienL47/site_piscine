@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PageController
+class PageController extends AbstractController
 {
     /**
      * @Route("/", name="home")
@@ -31,5 +32,14 @@ class PageController
     {
         return new Response('contact');
     }
+
+    /**
+     * @Route("/digimon", name="digimon")
+     */
+    public function digimon()
+    {
+        return new Response('Petit chat mignon qui se transforme ...');
+    }
+
 
 }

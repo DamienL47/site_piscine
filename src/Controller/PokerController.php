@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PokerController
+class PokerController extends AbstractController
 {
     /**
      * @Route("/poker", name="poker")
@@ -34,8 +35,8 @@ class PokerController
             return new Response($message);
             // sinon je lui mets une message de refus
         } else {
-            return new Response("Dégage morveux");
+            return $this->redirectToRoute('digimon');
         }
-
     }
+
 }

@@ -2,11 +2,18 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController
+
+//Je fais hériter PokerController de la classe de Symfony AbstractController
+//de cette manière, ma classe PokerController peut utiliser "toutes" les méthodes
+// définies dans la classe AbstractController
+//AbstractController fourni plusieurs méthode pour faciliter la création de fonctionnalité
+// dans nos controller(Comme des redirections, la création de formulaires etc...).
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/article", name="article_show")
@@ -44,7 +51,7 @@ class ArticleController
         $article = $articles[$id];
 
         // afficher son titre en réponse
-        return new Response($article['title']);
+        return $this->redirectToRoute('digimon');
     }
 
 
@@ -83,3 +90,5 @@ class ArticleController
         return new Response($article['title']);
     }
 }
+
+// l'héritage permet à l'enfant de bénéficier des methodes du parent
