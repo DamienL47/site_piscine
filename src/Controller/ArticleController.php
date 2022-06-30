@@ -13,15 +13,20 @@ use Symfony\Component\Routing\Annotation\Route;
 // définies dans la classe AbstractController
 //AbstractController fourni plusieurs méthode pour faciliter la création de fonctionnalité
 // dans nos controller(Comme des redirections, la création de formulaires etc...).
+
+//Définition de la classe Article
 class ArticleController extends AbstractController
 {
+    // Création de la route de direction
     /**
      * @Route("/article", name="article_show")
      */
+    //création de la méthode
     public function showArticle(Request $request)
     {
 
         // fake requête SQL "SELECT * FROM article";
+        //instantiation de la classe
         $articles = [
             1 => [
                 'title' => 'La canicule, il fait chaud',
@@ -51,7 +56,7 @@ class ArticleController extends AbstractController
         $article = $articles[$id];
 
         // afficher son titre en réponse
-        return $this->redirectToRoute('digimon');
+        return new Response($article['title']);
     }
 
 
